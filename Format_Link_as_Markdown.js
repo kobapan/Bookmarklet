@@ -8,47 +8,47 @@
 3. 画像もリンクもないところでクリックしたら、ページタイトルとページURLがコピーされる。
  例）[ページタイトル](http***.html)
 
-これは Markdown フォーマット用。hd() の中で cp() に渡してる書式を書き換えれば、wikiフォーマットとかいろいろ使える。
+これは Markdown フォーマット用。c() の中で cp() に渡してる書式を書き換えれば、wikiフォーマットとかいろいろ使える。
 */
 javascript:(function(){
-    function hd(e) {
+    function c(e) {
         e.preventDefault();
         let t=e.target;
-        if(t.src){cp('![]('+t.src+')');}
-        else if (t.href){cp('['+t.innerHTML+']('+t.href+')');}
-        else {cp('['+d.title+']('+d.URL+')')}
+        if(t.src){p('![]('+t.src+')');}
+        else if (t.href){p('['+t.innerHTML+']('+t.href+')');}
+        else {p('['+d.title+']('+d.URL+')')}
     }
-    function cp(str) {
-        let ta=d.createElement("textarea");
-        ta.value=str;
-        d.body.appendChild(ta);
-        ta.select();
+    function p(str) {
+        let t=d.createElement("textarea");
+        t.value=str;
+        d.body.appendChild(t);
+        t.select();
         d.execCommand("copy");
-        ta.parentElement.removeChild(ta);
+        t.parentElement.removeChild(t);
         d.head.removeChild(s);
-        d.removeEventListener('click',hd,false);
+        d.removeEventListener('click',c,false);
     }
-    function cu() {
-        var c=d.createElement('canvas'),
-            ctx=c.getContext('2d');
-        c.width=20;
-        c.height=20;
-        ctx.strokeStyle='#FF0000';
-        ctx.lineWidth=2;
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(20, 20);
-        ctx.stroke();
-        ctx.lineWidth=4;
-        ctx.beginPath();
-        ctx.moveTo(0, 10);
-        ctx.lineTo(0, 0);
-        ctx.lineTo(10, 0);
-        ctx.stroke();
-        return c.toDataURL();
+    function v(s) {
+        var a=d.createElement('canvas'),
+            x=a.getContext('2d');
+        a.width=20;
+        a.height=20;
+        x.strokeStyle=s;
+        x.lineWidth=2;
+        x.beginPath();
+        x.moveTo(0, 0);
+        x.lineTo(20, 20);
+        x.stroke();
+        x.lineWidth=4;
+        x.beginPath();
+        x.moveTo(0, 10);
+        x.lineTo(0, 0);
+        x.lineTo(10, 0);
+        x.stroke();
+        return a.toDataURL();
     }
     let d=document,s=d.createElement('style');
     d.head.appendChild(s);
-    s.textContent='body,a:hover{cursor:url('+cu()+'), auto !important}';
-    d.addEventListener('click',hd,false);
+    s.textContent='body{cursor:url('+v('#DC143C')+'),auto !important} a:hover{cursor:url('+v('#008B8B')+'),auto !important}';
+    d.addEventListener('click',c,false);
 })();
