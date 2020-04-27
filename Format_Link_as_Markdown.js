@@ -8,7 +8,7 @@
 3. 画像もリンクもないところでクリックしたら、ページタイトルとページURLがコピーされる。
  例）[ページタイトル](http***.html)
 
-これは Markdown フォーマット用。handler() の中で copy() に渡してる書式を書き換えれば、wikiフォーマットとかいろいろ使える。
+これは Markdown フォーマット用。hd() の中で cp() に渡してる書式を書き換えれば、wikiフォーマットとかいろいろ使える。
 */
 javascript:(function(){
     function hd(e) {
